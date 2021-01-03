@@ -1,0 +1,33 @@
+{
+  "name": "tiger-api",
+  "version": "1.0.0",
+  "description": "Tiger Graph REST API server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/canbax/tiger-api.git"
+  },
+  "keywords": [
+    "tigergraph",
+    "API",
+    "HTTP",
+    "graph",
+    "graph-database",
+    "database"
+  ],
+  "author": "yusuf canbaz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/canbax/tiger-api/issues"
+  },
+  "homepage": "https://github.com/canbax/tiger-api#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "got": "^11.8.1"
+  }
+}
