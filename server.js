@@ -1,7 +1,9 @@
-const express = require('express');
+import express from 'express';
+import got from 'got';
+import bodyParser from 'body-parser';
+
+
 const app = express();
-const got = require('got');
-const bodyParser = require('body-parser');
 
 // allow every browser to get response from this server, this MUST BE AT THE TOP
 app.use(function (req, res, next) {
@@ -45,7 +47,7 @@ app.post('/echo', async (req, res) => {
 
 app.post('/gsql', async (req, res) => {
   try {
-    const url = req.body.url.slice(0, -4) + '14240/gsqlserver/interpreted_query?a=10'
+    const url = req.body.url.slice(0, -4) + '14240/gsqlserver/interpreted_query'
     const { body } = await got.post(url, {
       body: req.body.q,
       username: req.body.username,
