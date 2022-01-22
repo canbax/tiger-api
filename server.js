@@ -2,7 +2,6 @@ import express from 'express';
 import got from 'got';
 import bodyParser from 'body-parser';
 
-
 const app = express();
 
 // allow every browser to get response from this server, this MUST BE AT THE TOP
@@ -183,6 +182,7 @@ app.post('/endpoints', async (req, res) => {
     errResponseFn(err, res);
   }
 });
+
 app.use(express.static('public'));
 const PORT = process.env.PORT || 9000;
 app.listen(PORT, () => console.log('proxy server on 9000'));
