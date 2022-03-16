@@ -21,7 +21,12 @@ function errResponseFn(err, res) {
 // get token 
 app.post('/requesttoken', async (req, res) => {
   try {
-    const { body } = await got(req.body.url + '/requesttoken?secret=' + req.body.secret);
+    const { body } = await got.post(req.body.url + '/requesttoken',
+      {
+        body: JSON.stringify({ graph: req.body.graph }),
+        username: req.body.username,
+        password: req.body.password
+      });
     res.write(body);
     res.end();
   } catch (err) {
