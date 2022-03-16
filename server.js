@@ -141,6 +141,21 @@ app.post('/nodes4edges', async (req, res) => {
   }
 });
 
+app.post('/schema', async (req, res) => {
+  try {
+    const url = req.body.url.slice(0, -4) + `14240/gsqlserver/gsql/schema?graph=${req.body.graph}`;
+    console.log(req.body.graph, req.body.username, req.body.password);
+    const { body } = await got(url, {
+      username: req.body.username,
+      password: req.body.password
+    });
+    res.write(body);
+    res.end();
+  } catch (err) {
+    errResponseFn(err, res);
+  }
+});
+
 app.post('/query', async (req, res) => {
   try {
     const q = req.body.query;
