@@ -14,7 +14,7 @@ app.use(function (req, res, next) {
 app.use(bodyParser.json());
 
 function errResponseFn(err, res) {
-  res.write('Error: ', JSON.stringify(err));
+  res.write(JSON.stringify({ error: err }));
   res.end();
 }
 
@@ -166,7 +166,7 @@ app.post('/query', async (req, res) => {
 
     let s = '';
     for (let i = 0; i < params.length; i++) {
-      s += Object.keys(params[i])[0] + '=' + Object.values(params[i])[0] + '&';
+      s += Object.keys(params[i])[0] + '=' + encodeURIComponent(Object.values(params[i])[0]) + '&';
     }
     s = s.slice(0, -1);
     let nodes = [];
