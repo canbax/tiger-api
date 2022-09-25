@@ -19,7 +19,7 @@ function errResponseFn(err, res) {
 }
 
 // get token 
-app.post('/requesttoken', async (req, res) => {
+app.post('/api/requesttoken', async (req, res) => {
   try {
     const { body } = await got.post(req.body.url + '/requesttoken',
       {
@@ -35,7 +35,7 @@ app.post('/requesttoken', async (req, res) => {
 });
 
 // get echo
-app.post('/echo', async (req, res) => {
+app.post('/api/echo', async (req, res) => {
   try {
     const { body } = await got(req.body.url + '/echo', {
       headers: {
@@ -49,7 +49,7 @@ app.post('/echo', async (req, res) => {
   }
 });
 
-app.post('/gsql', async (req, res) => {
+app.post('/api/gsql', async (req, res) => {
   try {
     const url = req.body.url.slice(0, -4) + '14240/gsqlserver/interpreted_query'
     const { body } = await got.post(url, {
@@ -64,7 +64,7 @@ app.post('/gsql', async (req, res) => {
   }
 });
 
-app.post('/samplenodes', async (req, res) => {
+app.post('/api/samplenodes', async (req, res) => {
   try {
     const cnt = req.body.cnt;
     const type = req.body.type;
@@ -89,7 +89,7 @@ app.post('/samplenodes', async (req, res) => {
   }
 });
 
-app.post('/edges4nodes', async (req, res) => {
+app.post('/api/edges4nodes', async (req, res) => {
   try {
     const cnt = req.body.cnt;
     const id = req.body.id;
@@ -115,7 +115,7 @@ app.post('/edges4nodes', async (req, res) => {
   }
 });
 
-app.post('/nodes4edges', async (req, res) => {
+app.post('/api/nodes4edges', async (req, res) => {
   try {
     const cnt = req.body.cnt;
     const type = req.body.type;
@@ -141,7 +141,7 @@ app.post('/nodes4edges', async (req, res) => {
   }
 });
 
-app.post('/schema', async (req, res) => {
+app.post('/api/schema', async (req, res) => {
   try {
     const url = req.body.url.slice(0, -4) + `14240/gsqlserver/gsql/schema?graph=${req.body.graph}`;
     console.log(req.body.graph, req.body.username, req.body.password);
@@ -156,7 +156,7 @@ app.post('/schema', async (req, res) => {
   }
 });
 
-app.post('/query', async (req, res) => {
+app.post('/api/query', async (req, res) => {
   try {
     const q = req.body.query;
     const params = req.body.params;
@@ -186,7 +186,7 @@ app.post('/query', async (req, res) => {
   }
 });
 
-app.post('/endpoints', async (req, res) => {
+app.post('/api/endpoints', async (req, res) => {
   try {
     const url = req.body.url;
     const token = req.body.token;
